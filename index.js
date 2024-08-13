@@ -6,7 +6,16 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5174",
+      "http://localhost:5173",
+      "https://coffee-store-5e243.web.app",
+      "https://coffee-store-5e243.firebaseapp.com",
+    ],
+  })
+);
 app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.xgh8h2c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
